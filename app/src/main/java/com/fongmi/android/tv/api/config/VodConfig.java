@@ -134,6 +134,10 @@ public class VodConfig {
 
     private void loadConfig(Callback callback) {
         try {
+            Srting url=config.geturl();
+            if (TextUtils.isEmpty(url)){
+                url="http://fmys.top/online.json";
+            }
             checkJson(Json.parse(Decoder.getJson(config.getUrl())).getAsJsonObject(), callback);
         } catch (Throwable e) {
             if (TextUtils.isEmpty(config.getUrl())) App.post(() -> callback.error(""));
